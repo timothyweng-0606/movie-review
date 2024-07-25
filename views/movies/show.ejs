@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details</title>
+</head>
+<body>
+    <div id="movieDetails" data-movie-id="<%= movieId %>"></div>
+    <div id="reviewsSection">
+        <h2>Reviews:</h2>
+        <div class="review-container" id="reviewContainer">
+            <ul>
+                <% reviews.forEach(review => { %>
+                  <li>
+                    <strong><%= review.userId.username %>:</strong> <%= review.content %> <em>(<%= review.createdAt.toDateString() %>)</em>
+                  </li>
+                <% }) %>
+            </ul>
+        </div>
+        <h3>Add a Review:</h3>
+        <form id="reviewForm" action="/users/<%= user._id %>/movies/<%= movieId %>/add" method="POST">
+            <textarea name="content" id="reviewContent" rows="4" cols="50" placeholder="Write your review here..."></textarea>
+            <button type="submit">Add Review</button>
+        </form>
+    </div>
+    <script src="/index.js"></script>
+</body>
+</html>

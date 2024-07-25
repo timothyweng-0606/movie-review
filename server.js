@@ -7,9 +7,15 @@ const methodOverride = require('method-override');
 const morgan = require('morgan');
 const session = require('express-session');
 
+const isSignedIn = require('./middleware/is-signed-in.js');
+const passUserToView = require('./middleware/pass-user-to-view.js');
+
+const moviesController = require('./controllers/movies.js');
+const reviewsController = require('./controllers/reviews');
 const authController = require('./controllers/auth.js');
 
 const port = process.env.PORT ? process.env.PORT : '3000';
+const path = require('path');
 
 mongoose.connect(process.env.MONGODB_URI);
 
@@ -18,8 +24,11 @@ mongoose.connection.on('connected', () => {
 });
 
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(methodOverride('_method'));
 // app.use(morgan('dev'));
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -28,21 +37,23 @@ app.use(
   })
 );
 
+app.use(passUserToView);
+
+// Set view engine
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
 app.get('/', (req, res) => {
   res.render('index.ejs', {
     user: req.session.user,
   });
 });
 
-app.get('/vip-lounge', (req, res) => {
-  if (req.session.user) {
-    res.send(`Welcome to the party ${req.session.user.username}.`);
-  } else {
-    res.send('Sorry, no guests allowed.');
-  }
-});
 
 app.use('/auth', authController);
+app.use(isSignedIn);
+app.use('/users/:userId/movies', moviesController)
+// app.use('/users/reviews', reviewsController);
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);

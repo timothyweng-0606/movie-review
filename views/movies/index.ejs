@@ -7,13 +7,12 @@
   <title>Home Page</title>
 </head>
 <body>
-    <h1>Welcome to the app, guest.</h1>
+    <h1>Welcome to the app, <%= user.username %>!</h1>
     <p>
-      <a href="/auth/sign-up">Sign up</a> or
-      <a href="/auth/sign-in">Sign in</a>.
+      <a href="/auth/sign-out">Sign out</a>
     </p>
-  <input type="text" id="movieName" placeholder="Enter Movie Name">
-    <button onclick="fetchData()">Fetch Movie</button>
+  <input type="text" id="movie-name" placeholder="Enter Movie Name">
+    <button onclick="fetchData('<%= user._id %>')">Fetch Movie</button>
     <div id="moviesList"></div>
     <script src="/index.js" defer></script>
 </body>

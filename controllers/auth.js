@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 
-const User = require('../models/user.js');
+const {User, Review} = require('../models/user.js');
 
 router.get('/sign-up', (req, res) => {
   res.render('auth/sign-up.ejs');
@@ -70,7 +70,7 @@ router.post('/sign-in', async (req, res) => {
       _id: userInDatabase._id
     };
   
-    res.redirect('/');
+    res.redirect(`/users/${userInDatabase._id}/movies`);
   } catch (error) {
     console.log(error);
     res.redirect('/');

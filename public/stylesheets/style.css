@@ -311,3 +311,23 @@ textarea {
     border: none;
 }
 
+.edit-form {
+    width: 400px;
+}
+
+.edit-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;;
+}
+
+.edit-page h1 {
+    margin-bottom: 2rem;
+}
+
+.edit-rev-btn {
+    margin: 1.25rem;
+    width: 80px;
+    height: 40px;
+}

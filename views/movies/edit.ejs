@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     <title>Edit Review</title>
 </head>
 <body>
-    <h1>Edit</h1>
-    <form 
+    <%- include('../partials/_navbar.ejs') %>
+    <div class="edit-page">
+        <h1>Edit</h1>
+    <form class="edit-form"
     action="/users/<%= user._id %>/movies/profile/reviews/<%= reviewId %>?_method=PUT"
     method="POST"
   >
         <textarea name="content" id="reviewContent" rows="4" cols="50" placeholder="Write your review here..."><%= reviewContent %></textarea>        
-        <button type="submit">Edit Review</button>
+        <button class="edit-rev-btn" type="submit">Edit Review</button>
     </form>
+    </div>
 </body>
 </html>

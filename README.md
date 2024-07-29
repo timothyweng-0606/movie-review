@@ -1,4 +1,4 @@
-# Stinky Tofu (MEN Stack CRUD Movie Review App) 🚢
+# Stinky Tofu (MEN Stack CRUD Movie Review App) 🍿
 
 ![Moview Review Image](https://github.com/user-attachments/assets/88dd00ee-32e8-40a3-b76e-807ece10ebfa)
 

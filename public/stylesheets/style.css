@@ -56,10 +56,14 @@ button:hover {
 }
 
 button {
-    padding: 1rem 2rem;
+    /* padding: 1rem 2rem; */
     font-size: 0.9375rem;
     border-radius: 10px;
     border: none;
+}
+
+.sign-btn {
+    padding: 1rem 2rem;
 }
 
 .nav-div {
@@ -120,18 +124,20 @@ button {
 }
 
 #search-icon{
-    width: 30px;
-    height: 30px;
-
+    width: 40px;
+    height: 40px;
 }
 
-.search-btn {
+.search-btn{
     border: 0;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    cursor:pointer;
-    background: white;
+    width: 50px;
+    height: 50px;
+    background-color: none;
+}
+
+.search-btn:hover {
+    background-color: gray;
 }
 
 .background {

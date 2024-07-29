@@ -3,16 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/stylesheets/style.css">
   <title>Sign In</title>
 </head>
-<body>
-  <h1>Sign in</h1>
+<body class="userAuth-page">
+  <a class="back-nav" href="/">Back to Home</a>
   <form action="/auth/sign-in" method="POST">
-    <label for="username">Username:</label>
-    <input type="text" name="username" id="username" required />
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password" required />
-    <button type="submit">Sign in</button>
+    <h1 class="login-header">Sign in</h1>
+    <label class="username" for="username">Username:</label>
+    <input class="username-input" type="text" name="username" id="username" required />
+    <label class = "password" for="password">Password:</label>
+    <input class = "password-input" type="password" name="password" id="password" required />
+    <button class = "sign-in" type="submit">Sign in</button>
   </form>
 </body>
 </html>

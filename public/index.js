@@ -24,24 +24,21 @@ async function fetchData(user_id) {
         searchText.value = ''
 
         data.results.forEach((movie) => {
-            console.log(movie);
             const moviePoster = movie.poster_path;
-            const movieUrl = `https://image.tmdb.org/t/p/w200${moviePoster}`;
-            console.log(movieUrl);
-
+            const movieUrl = moviePoster ? `https://image.tmdb.org/t/p/w200${moviePoster}` : "/assets/no-image.jpg";
+            
             const linkElement = document.createElement("a");
-            const userId = user_id
-            linkElement.href = `/users/${userId}/movies/${movie.id}`
-            // Create img element
+            const userId = user_id;
+            linkElement.href = `/users/${userId}/movies/${movie.id}`;
+            linkElement.style.display = "inline-block"; // Ensure the link wraps tightly around the image
             const imgElement = document.createElement("img");
+            imgElement.className = "movie-poster"
             imgElement.src = movieUrl;
             imgElement.alt = movie.title;
-            imgElement.style.display = "block";
-
-            // Append card to container
+            imgElement.style.display = "block"; // Ensure the image is a block element
+        
             linkElement.appendChild(imgElement);
-            movieContainer.appendChild(linkElement);
-
+            document.getElementById("moviesList").appendChild(linkElement);
         });
     } catch (error) {
         console.error(error);
@@ -59,19 +56,26 @@ async function fetchMovieDetails(movieId) {
         const movie = await response.json();
         console.log(movie);
 
-        const movieDetails = document.getElementById("movieDetails");
+        const background = document.querySelector(".background")
+        const movieBackdropUrl = movie.belongs_to_collection.backdrop_path
+        console.log(movieBackdropUrl)
+        background.style.backgroundImage = `url("https://image.tmdb.org/t/p/original${movieBackdropUrl}")`
+        background.style.backgroundPosition = "center"
+        background.style.backgroundSize = "cover"
         movieDetails.innerHTML = `
-            <h1>${movie.title}</h1>
-            <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.title}">
-            <p><strong>Release Date:</strong> ${movie.release_date}</p>
-            <p><strong>Overview:</strong> ${movie.overview}</p>
-            <p><strong>Genres:</strong> ${movie.genres.map(genre => genre.name).join(', ')}</p>
-            <p><strong>Rating:</strong> ${movie.vote_average}</p>
+            <div class="movie-detail-container">
+                <h1>${movie.title}</h1>
+                <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.title}">
+            <div class="movie-detail">
+                <p><strong>Release Date:</strong> ${movie.release_date}</p><br>
+                <p>${movie.overview}</p><br>
+                <p><strong>Genres:</strong> ${movie.genres.map(genre => genre.name).join(', ')}</p><br>
+                <p><strong>Rating:</strong> ${movie.vote_average}</p><br>
+            </div>
+            </div>
         `;
     } catch (error) {
         console.error(error);
         document.getElementById('movieDetails').innerText = 'Error fetching movie details.';
     }
 }
-
-

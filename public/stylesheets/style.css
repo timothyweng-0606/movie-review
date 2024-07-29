@@ -1,11 +1,307 @@
-#movieSprite {
-    width: 100px;
-    height: 100px;
+
+@import url('https://fonts.googleapis.com/css?family=Inconsolata:700');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Oswald', sans-serif;
+  list-style: none;
+}
+
+html, body {
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  background-color: black;
+  color: white;
+  list-style: none;
+}
+
+a {
+    text-decoration: none;
+
+  }  
+
+a:link {
+    color: white; /* Color of visited links */
+  }
+
+
+a:visited {
+    color: white; /* Color of visited links */
+  }
+
+a:hover {
+    color: gray;
+    text-decoration: underline;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.25rem;
+}
+
+input {
+    border: none;
+}
+
+.authlink {
+    padding: 1rem;
+}
+
+button:hover {
+    color: gray;
+}
+
+button {
+    padding: 1rem 2rem;
+    font-size: 0.9375rem;
+    border-radius: 10px;
+    border: none;
+}
+
+.nav-div {
+   position: relative;
+   z-index:4;
+}
+
+.main-page {
+    background-image: url('/assets/movie.jpg');
+    background-repeat:repeat-y;
+    background-position: center;
+    background-size: cover;
+}
+
+.greeting {
+    font-size: 40px;
+}
+
+#greeting-msg {
+    margin: 2rem;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+}
+
+.logo-info {
+    display: flex;
+}
+
+.search-info { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.search-bar {
+    margin: 2rem;
+    width: 100%;
+    max-width: 700px;
+    background: rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    border-radius: 60px;
+    padding: 0.625rem;
+}
+
+.search-bar  > input{
+   background: transparent;
+   flex: 1;
+   border: 0;
+   outline: none;
+   padding: 1.5rem 1.25rem;
+   font-size: 1.25rem;
+   color: white;
+}
+
+#search-icon{
+    width: 30px;
+    height: 30px;
+
+}
+
+.search-btn {
+    border: 0;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor:pointer;
+    background: white;
+}
+
+.background {
+    position: relative;
+    min-height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+    z-index: 1;
+}
+
+.content {
+    position: relative;
+    z-index: 2; /* Ensure content is above the overlay */
+    color: white;
+    padding: 1.25rem;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    margin-bottom: 1.25rem;
+}
+.review-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+textarea {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* Sign In and Out Page */
+
+.login-header {
+    margin: 3rem;
+}
+.userAuth-page {
+    background-image: url('/public/assets/movie-2.jpg');
+    background-repeat:no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.userAuth-page form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.username , .password{
+    font-size: 1.25rem;
+}
+
+.username-input , .password-input{
+    margin: 2rem;
+    height: 30px;
+    width: 200px;
+    border-radius: 10px;
+}
+
+
+
+/* ////////////// */
+
+#moviesList img {
+    border-radius: 10px;
 }
 
 #moviesList {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 20px; 
-    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 1.25rem; 
+    padding: 1.25rem;
+    margin: 0 auto;
+    max-width: 1200px;
 }
+
+.movie-poster {
+    width: 200px;
+    height: 300px;
+}
+
+
+.movie-detail-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-detail-container img {
+    margin: 1rem;
+    border-radius: 10px;
+}
+
+.movie-detail p {
+    font-size: 1.25rem;
+}
+
+.content{
+    width: 500px;
+    margin: 0 auto;
+}
+.review-text{
+    font-size: 2rem;
+}
+
+.review-container {
+    margin: 1.25rem;
+    margin: 0 auto;
+}
+
+.review-container li {
+    padding: 1.25rem;
+}
+
+.review-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#reviewForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#reviewForm textarea {
+    border-radius: 10px;
+}
+
+#reviewForm button {
+    margin: 1rem;
+    padding: 0.25rem;
+}
+
+.btns-container {
+    margin-top: 1.25rem;
+    border: none;
+}
+
+.review-link {
+    margin-left: 1rem;
+    padding: 20px;
+    border: 1px white solid;
+
+}
+
+.delete-btn {
+    padding: 1.25rem;
+    border-radius: 20px;
+    border: none;
+}
+

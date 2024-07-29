@@ -3,16 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/stylesheets/style.css">
   <title>Home Page</title>
 </head>
-<body>
-    <h1>Welcome to the app, <%= user.username %>!</h1>
-    <p>
-      <a href="/auth/sign-out">Sign out</a>
-    </p>
-  <input type="text" id="movie-name" placeholder="Enter Movie Name">
-    <button onclick="fetchData('<%= user._id %>')">Fetch Movie</button>
+<body class="main-page">
+  <%- include('../partials/_navbar.ejs') %>
+  <div class="search-info">
+    <h1 id="greeting-msg">Welcome to the show, <%= user.username %>!</h1>
+    <div class="search-bar">
+      <input type="search" name="search" id="movie-name" placeholder="Enter Movie Name" pattern=".*\S.*" required>
+      <button class="search-btn" onclick="fetchData('<%= user._id %>')"><img id= "search-icon" src="/assets/search-icon-2048x2048-cmujl7en.png" alt="search-icon"></button>
+    </div>
+  </div>
     <div id="moviesList"></div>
     <script src="/index.js" defer></script>
 </body>

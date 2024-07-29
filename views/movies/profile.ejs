@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1> <%= user.username %>'s Page</h1>
+    <div class="review-container">
+      <h2>My reviews</h2>
+    <% userReviews.forEach(review => { %>
+            <li>
+                <a class= "review-text"
+                href="/users/<%= user._id %>/movies/<%= review.movieId %>"><p>Review: <%= review.content %></p></a>
+                <p>Commented At: <%= new Date(review.createdAt).toLocaleString() %></p>
+              <div class="btns-container">
+                <form
+              action="/users/<%= user._id %>/movies/profile/reviews/<%= review._id %>?_method=DELETE"
+              method="POST"
+            >
+              <button class="delete-btn" type="submit">Delete review</button>
+              <a class="review-link"
+              href="/users/<%= user._id %>/movies/profile/reviews/<%= review._id %>/edit"
+            >
+            Edit Review
+              </a>
+              </div>
+            </li>
+    <% }) %>
+    </div>
+</body>
+</html>
